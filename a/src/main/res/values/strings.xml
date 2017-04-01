@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">A</string>
+    <string name="image_transition">image_transition</string>
+    <string name="transition_name_image">transition_name_image</string>
+</resources>

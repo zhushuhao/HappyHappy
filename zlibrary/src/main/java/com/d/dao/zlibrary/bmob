@@ -1,0 +1,84 @@
+objectId:每一条数据的编号
+createdAt:创建时间(2016-12-18 15:40:20)
+updatedAt:上次更新时间(2016-12-18 15:40:20)
+ACL:权限设置
+
+增加一条记录
+1.GameScore gameScore = new GameScore();
+//注意：不能调用gameScore.setObjectId("")方法
+        gameScore.setPlayerName("比目");
+        gameScore.setScore(89);
+        gameScore.setIsPay(false);
+        gameScore.save(mContext, new SaveListener() {
+
+            @Override
+            public void onSuccess() {
+                toast("添加数据成功，返回objectId为："+gameScore.getObjectId() + ”,数据在服务端的创建时间为：“ + gameScore.getCreatedAt());
+            }
+
+            @Override
+            public void onFailure(int code, String arg0) {
+                // 添加失败
+            }
+        });
+        成功后gameScore使用getObjectId()就可以获取objectId了。
+2.Person p2 = new Person();
+  p2.setName("lucky");
+  p2.setAddress("北京海淀");
+  p2.save(new SaveListener<String>() {
+      @Override
+      public void done(String objectId,BmobException e) {
+          if(e==null){
+              toast("添加数据成功，返回objectId为："+objectId);
+          }else{
+              toast("创建数据失败：" + e.getMessage());
+          }
+      }
+  });
+
+更新一条数据
+
+1.//更新Person表里面id为6b6c11c537的数据，address内容更新为“北京朝阳”
+Person p2 = new Person();
+p2.setAddress("北京朝阳");
+p2.update("6b6c11c537", new UpdateListener() {
+
+   Person p2 = new Person();
+   p2.setAddress("北京朝阳");
+   p2.update("6b6c11c537", new UpdateListener() {
+
+       @Override
+    public void done(BmobException e) {
+        if(e==null){
+            toast("更新成功:"+p2.getUpdatedAt());
+        }else{
+            toast("更新失败：" + e.getMessage());
+        }
+    }
+
+});
+//查询多条数据
+ BmobQuery<GameScore> query = new BmobQuery<GameScore>();
+//查询playerName叫“比目”的数据
+                    query.addWhereEqualTo("playerName", "比目");
+//返回50条数据，如果不加上这条语句，默认返回10条数据
+                    query.setLimit(50);
+//执行查询方法
+                    query.findObjects(new FindListener<GameScore>() {
+                        @Override
+                        public void done(List<GameScore> object, BmobException e) {
+                            if(e==null){
+                                toast("查询成功：共"+object.size()+"条数据。");
+                                for (GameScore gameScore : object) {
+                                    //获得playerName的信息
+                                    gameScore.getPlayerName();
+                                    //获得数据的objectId信息
+                                    gameScore.getObjectId();
+                                    //获得createdAt数据创建时间（注意是：createdAt，不是createAt）
+                                    gameScore.getCreatedAt();
+                                }
+                            }else{
+                                Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
+                            }
+                        }
+                    });

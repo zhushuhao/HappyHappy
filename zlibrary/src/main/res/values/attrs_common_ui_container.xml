@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CommonUIContainer">
+
+        <!--<attr name="emptyTitleTextSize" format="dimension" />-->
+        <!--<attr name="emptyImageWidth" format="dimension" />-->
+        <!--<attr name="emptyImageHeight" format="dimension" />-->
+        <!--<attr name="emptyTitleTextColor" format="color" />-->
+        <!--<attr name="emptyContentTextSize" format="dimension" />-->
+        <!--<attr name="emptyContentTextColor" format="color" />-->
+
+
+        <!--<attr name="errorImageViewWidth" format="dimension" />-->
+        <!--<attr name="errorImageViewHeight" format="dimension" />-->
+        <!--<attr name="errorTitleTextColor" format="color" />-->
+        <!--<attr name="errorTitleTextSize" format="dimension" />-->
+        <!--<attr name="errorContentTextSize" format="dimension" />-->
+        <!--<attr name="errorContentTextColor" format="color" />-->
+        <!--<attr name="errorButtonTextSize" format="dimension" />-->
+        <!--<attr name="errorButtonTextColor" format="color" />-->
+
+    </declare-styleable>
+</resources>

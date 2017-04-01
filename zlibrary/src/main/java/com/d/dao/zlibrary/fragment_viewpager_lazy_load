@@ -1,0 +1,113 @@
+
+     /**
+         * fragment之间切换时触发 lazyLoad
+         * 不会在activity切换时触发
+         * activity切换时触发onResume,此时只有当前显示界面的fragment的isVisible属性为true,其他为false
+         * <p>
+         * 第一次进入包含fragment 的activity时，假设默认显示第一个fragment, 那么第一个fragment的lazyLoad与onResume都会触发
+         * <p>
+         * <p>
+         * <p>
+         * <p>
+         * 第一次进入Activity,此时四个fragment都还没有创建,默认显示1
+         * <p>
+         * <1>
+         * 第一步：创建1，2两个fragment,触发setUserVisibleHint,isVisible都为false
+         * 第二步:1触发setUserVisibleHint,isVisible设置为true,然后onVisible,接着lazyLoad,
+         * 然后onResume,此时isVisible为true;对于2,直接onResume,此时isVisible为false
+         * </1>
+         * <p>
+         * <2>
+         * 点击2,从1切换到2
+         * 3被创建,触发setUserVisibleHint,isVisible设为false
+         * 1被隐藏，触发setUserVisibleHint,isVisible由true设置为false
+         * 2显示出来，触发setUserVisibleHint,isVisible 由false设置为true,然后onVisible,接着lazyLoad,
+         * 由于3是第一次被创建，所以3触发onResume,此时的isVisible为false
+         * </2>
+         * <p>
+         * <3>
+         * 点击3，由2切换到3，类似与1切换到2
+         * 4被创建，触发setUserVisibleHint,isVisible设置为false
+         * 2被隐藏，触发setUserVisibleHint,isVisible由true设置为false
+         * 3显示出来，触发setUserVisible,isVisible由false设置为true,然后onVisible,lazyLoad
+         * 由于4是第一次被创建，触发onResume,isVisible为false
+         * <3/>
+         * <p>
+         * <4>
+         * 点击4，由3切换到4(到这时4个fragment已经都被创建出来)
+         * 由于4是最后一个,所以没有需要创建的fragment，不再创建
+         * 3被隐藏，触发setUserVisibleHint,isVisible设置为false
+         * 4显示出来，触发 setUserVisibleHint,isVisible设置为true, 然后onVisible,lazyLoad
+         * </4>
+         * <p>
+         * <p>
+         * <5>
+         * 对于上诉的<2>,假如直接点击3
+         * 先创建3，4,3,4都触发setHintVisibleHint，isVisible
+         * 然后对于1:隐藏,isVisible变为false
+         * 对于2,不改变，本来就不显示
+         * 显示3,触发setUserVisibleHint,isVisible设置为true,onVisible,lazyLoad
+         * onResume
+         * 对于4,触发onResume
+         * <p>
+         * <6>
+         * 对于<2>，假设直接点击4
+         * 创建3，4，setUserVisibleHint,isVisible为false,
+         * 隐藏1，setUserVisibleHint,isVisible为 false
+         * 显示4，setUserVisibleHint,isVisible为true,->onVisible->lazyLoad->onResume
+         * </6>
+         * <p>
+         * <p>
+         * <p>
+         * <p>
+         * fragment都创建以后:
+         * 四个 fragment（1，2，3，4）都创建以后，在进行切换操作，例如从3切换到1,那么
+         * 对3：隐藏3，isVisible设为false
+         * 对1: 显示1，isVisible设置为true,触发onVisible, 接着触发lazyLoad();
+         * 对于其他切换也是一样的，x->y,x隐藏,isVisible设置为false,
+         * y显示,isVisible设置为true,然后onVisible,然后lazyLoad
+         * <p>
+         * <p>
+         * 如果跳到其他界面再回来，如果只有12被创建那么只有12触发onResume,
+         * 如果123被创建，那么123触发onResume，如果1234都已经被创建，那么1234都触发onResume,
+         * 但是回来之后还是只有原来显示的那个fragment的isVisible为true,其他为false
+         */
+
+    //protected boolean isVisible;
+    /**
+     * viewpager+多个fragment时使用这个方法,
+     * 在这里实现Fragment数据的缓加载.
+     *
+     * @param isVisibleToUser
+     */
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        Log.e("tag","setUserVisibleHint");
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if (getUserVisibleHint()) {
+//            isVisible = true;
+//            onVisible();
+//        } else {
+//            isVisible = false;
+//            onInvisible();
+//        }
+//    }
+//
+//    protected void onVisible() {
+//        Log.e("tag","onVisible");
+//
+//        lazyLoad();
+//    }
+//
+//    protected abstract void lazyLoad();
+//
+//    protected void onInvisible() {
+//    }
+
+
+
+     注意：这种懒加载必须有viewpager
+     没有viewpager就不可以使用上述方法
+
+     //    多个fragments,show()hide()调用的onHiddenChanged()
+

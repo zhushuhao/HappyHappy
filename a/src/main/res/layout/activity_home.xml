@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<com.arlib.floatingsearchview.FloatingSearchView-->
+        <!--android:id="@+id/floating_search_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="120px"-->
+        <!--android:elevation="20px"-->
+        <!--app:floatingSearch_close_search_on_keyboard_dismiss="true"-->
+        <!--app:floatingSearch_dimBackground="false"-->
+        <!--app:floatingSearch_leftActionMode="showHamburger"-->
+        <!--app:floatingSearch_menu="@menu/search_menu"-->
+        <!--app:floatingSearch_searchBarMarginLeft="16px"-->
+        <!--app:floatingSearch_searchBarMarginRight="16px"-->
+        <!--app:floatingSearch_searchBarMarginTop="10px"-->
+        <!--app:floatingSearch_searchHint="Search"-->
+        <!--app:floatingSearch_showSearchKey="false"-->
+        <!--app:floatingSearch_suggestionsListAnimDuration="250"-->
+        <!--app:layout_scrollFlags="scroll|enterAlways" />-->
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/alpha_80_white"
+        app:itemIconTint="@drawable/selector_bottom_navigation_view"
+        app:itemTextColor="@drawable/selector_bottom_navigation_view"
+        app:menu="@menu/navigation" />
+
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progress1"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:indeterminateDrawable="@drawable/progress_gear_fu" />
+
+        <ProgressBar
+            android:id="@+id/progress2"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:layout_below="@+id/progress1"
+            android:layout_toLeftOf="@+id/progress1"
+            android:layout_toStartOf="@+id/progress1"
+            android:indeterminateDrawable="@drawable/progress_gear_fu" />
+
+        <ProgressBar
+            android:id="@+id/progress3"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:layout_below="@+id/progress1"
+            android:layout_toEndOf="@+id/progress1"
+            android:layout_toRightOf="@+id/progress1"
+            android:indeterminateDrawable="@drawable/progress_gear_fu" />
+
+        <ProgressBar
+            android:id="@+id/progress4"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:layout_alignLeft="@+id/progress1"
+            android:layout_alignStart="@+id/progress1"
+            android:layout_below="@+id/progress2"
+            android:indeterminateDrawable="@drawable/progress_gear_fu" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CommonToolbar">
+        <attr name="CommonToolbar_showRightFirst" format="boolean" />
+        <attr name="CommonToolbar_showRightSecond" format="boolean" />
+        <attr name="CommonToolbar_title" format="string" />
+        <attr name="CommonToolbar_rightFirstImg" format="reference" />
+        <attr name="CommonToolbar_rightSecondImg" format="reference" />
+    </declare-styleable>
+</resources>
